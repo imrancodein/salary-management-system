@@ -18,4 +18,16 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+export const getImageUrl = (imagePath) => {
+  if (!imagePath) return null;
+
+  if (imagePath.startsWith("http")) {
+    return imagePath;
+  }
+
+  const backendUrl = import.meta.env.VITE_API_URL.replace("/api", "");
+
+  return `${backendUrl}${imagePath}`;
+};
+
 export default API;

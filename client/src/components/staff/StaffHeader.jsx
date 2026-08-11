@@ -1,5 +1,6 @@
 import { FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { getImageUrl } from "../../api/axios";
 const StaffHeader = ({ setIsOpen }) => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -59,17 +60,11 @@ const StaffHeader = ({ setIsOpen }) => {
     className="flex items-center gap-3 group"
   >
 
-    <img
-      src={
-        user?.profilePhoto
-          ? `http://localhost:5000${user.profilePhoto}`
-          : `https://ui-avatars.com/api/?name=${encodeURIComponent(
-              user?.name || "Staff"
-            )}&background=2563eb&color=ffffff`
-      }
-      alt={user?.name || "Staff"}
-      className="w-10 h-10 rounded-full object-cover border-2 border-gray-200 group-hover:border-blue-500 transition"
-    />
+   <img
+  src={getImageUrl(user.profilePhoto)}
+  alt={user.name}
+  className="w-10 h-10 rounded-full object-cover"
+/>
 
     {/* <div className="hidden md:block text-left">
       <p className="text-sm font-semibold text-gray-800 group-hover:text-blue-600">

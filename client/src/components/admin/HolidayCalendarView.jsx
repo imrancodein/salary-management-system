@@ -108,14 +108,14 @@ const HolidayCalendarView = ({
           date.setMonth(date.getMonth() - 1);
           setCurrentDate(date);
         }}
-        className="px-4 py-2 border rounded-lg hover:bg-gray-100"
+        className="px-3 py-2 border rounded-lg hover:bg-gray-100"
       >
          Back
       </button>
 
       <button
         onClick={() => setCurrentDate(new Date())}
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
       >
         Today
       </button>
@@ -126,7 +126,7 @@ const HolidayCalendarView = ({
           date.setMonth(date.getMonth() + 1);
           setCurrentDate(date);
         }}
-        className="px-4 py-2 border rounded-lg hover:bg-gray-100"
+        className="px-3 py-2 border rounded-lg hover:bg-gray-100"
       >
         Next
       </button>

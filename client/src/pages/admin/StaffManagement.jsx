@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAllStaff,deleteStaff, } from "../../services/staff.service";
 import { getDepartments } from "../../services/department.service";
 import AddStaffModal from "../../components/staff/AddStaffModal";
+import { getImageUrl } from "../../api/axios";
 import SalaryFilter from "../../components/common/SalaryFilter";
 const StaffManagement = () => {
 const [staffList, setStaffList] = useState([]);
@@ -170,10 +171,10 @@ const filteredStaff = staffList.filter((staff) => {
         <td className="p-4">
           {staff.profilePhoto ? (
             <img
-              src={`http://localhost:5000${staff.profilePhoto}`}
-              alt={staff.name}
-              className="w-10 h-10 rounded-full object-cover"
-            />
+  src={getImageUrl(staff.profilePhoto)}
+  alt={staff.name}
+  className="w-10 h-10 rounded-full object-cover"
+/>
           ) : (
             "👤"
           )}
