@@ -15,11 +15,14 @@ import EOD from "../pages/staff/EOD";
 import { Toaster } from "react-hot-toast";
 import EODManagement from "../pages/admin/EODManagement";
 import Profile from "../pages/staff/Profile";
+// import ProgramExpenseManagement from "../pages/admin/ProgramExpenseManagement";
+import ProgramExpenseManagement from "../pages/admin/ProgramExpenseManagement";
 // import StaffLeave from "../pages/staff/LeaveManagement";
 // import Leave from "../pages/admin/Leave";
 import Holiday from "../pages/staff/Holiday";
 import HolidayCalendar from "../pages/admin/HolidayCalendar";
 import LeaveManagement from "../pages/admin/LeaveManagement";
+import StaffProgramExpense from "../pages/staff/StaffProgramExpense";
 import Leave from "../pages/staff/Leave"
 const AppRoutes = () => {
   return (
@@ -85,9 +88,19 @@ const AppRoutes = () => {
   path="/staff/profile"
   element={<Profile />}
 />
+{/* <Route
+  path="/admin/dashboard"
+  element={<AdminDashboard />}
+/> */}
+
+<Route
+  path="/admin/program-expense"
+  element={<ProgramExpenseManagement />}
+/>
+< Route path="/staff/program-expenses" element={<StaffProgramExpense/>}/>
       </Routes>
     </BrowserRouter>
   );
 };
 
-export default AppRoutes;
+export default AppRoutes

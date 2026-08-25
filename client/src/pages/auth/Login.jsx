@@ -125,12 +125,13 @@ if (response.user.role === "admin") {
 
           <div className="flex justify-end mb-6">
 
-            <button
-              type="button"
-              className="text-blue-500 hover:underline"
-            >
-              Forgot Password?
-            </button>
+          <button
+          type="button"
+          onClick={() => navigate("/forgot-password")}
+          className="text-blue-500 hover:underline"
+        >
+          Forgot Password?
+        </button>
 
           </div>
             <Button type="submit">

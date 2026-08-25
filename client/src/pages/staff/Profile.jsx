@@ -32,24 +32,44 @@ const [photoPreview, setPhotoPreview] = useState(null);
     loadProfile();
   }, []);
 
-  const loadProfile = async () => {
-    try {
-      const response = await getProfile();
+ const loadProfile = async () => {
+  try {
+    const response = await getProfile();
 
-      setProfile(response.data);
+    const updatedUser = response.data;
 
-      setFormData({
-        phone: response.data?.phone || "",
-        address: response.data?.address || "",
-        emergencyContact:
-          response.data?.emergencyContact || "",
-      });
-    } catch (error) {
-      console.error("Profile Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    setProfile(updatedUser);
+
+    setFormData({
+      phone: updatedUser?.phone || "",
+      address: updatedUser?.address || "",
+      emergencyContact:
+        updatedUser?.emergencyContact || "",
+    });
+
+    // Update localStorage user data
+    const oldUser = JSON.parse(
+      localStorage.getItem("user") || "{}"
+    );
+
+    const newUser = {
+      ...oldUser,
+      ...updatedUser,
+    };
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(newUser)
+    );
+
+    // Tell StaffHeader that user data changed
+    window.dispatchEvent(new Event("userUpdated"));
+  } catch (error) {
+    console.error("Profile Error:", error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +88,7 @@ const [photoPreview, setPhotoPreview] = useState(null);
       [name]: value,
     }));
   };
-
+// handleUpdateProfile
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
 
@@ -87,14 +107,24 @@ uploadData.append(
 if (selectedPhoto) {
   uploadData.append("profilePhoto", selectedPhoto);
 }
-
 const response = await updateProfile(uploadData);
 
-      alert(response.message);
+alert(response.message);
 
-      await loadProfile();
+// Get updated user data
+const updatedUser = response.data?.staff || response.data?.user;
 
-      setActiveTab("profile");
+if (updatedUser) {
+  localStorage.setItem("user", JSON.stringify(updatedUser));
+
+  // Update current tab/header immediately
+  window.dispatchEvent(new Event("userUpdated"));
+}
+
+await loadProfile();
+
+setActiveTab("profile");
+
     } catch (error) {
       alert(
         error.response?.data?.message ||

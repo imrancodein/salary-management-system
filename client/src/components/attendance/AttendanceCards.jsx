@@ -16,7 +16,7 @@ const AttendanceCards = ({ attendance }) => {
   const totalDays = attendance.length;
 
   return (
-    <div className="grid grid-cols-4 lg:grid-cols-4 gap-4 mb-4">
+   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
 
       <StatCard
         title="Present"

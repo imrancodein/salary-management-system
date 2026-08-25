@@ -18,16 +18,22 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Create full image URL
 export const getImageUrl = (imagePath) => {
   if (!imagePath) return null;
 
-  if (imagePath.startsWith("http")) {
+  // Already a complete URL
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
     return imagePath;
   }
 
-  const backendUrl = import.meta.env.VITE_API_URL.replace("/api", "");
+  const backendUrl = import.meta.env.VITE_API_URL.replace(/\/api\/?$/, "");
 
-  return `${backendUrl}${imagePath}`;
+  const cleanPath = imagePath.startsWith("/")
+    ? imagePath
+    : `/${imagePath}`;
+
+  return `${backendUrl}${cleanPath}`;
 };
 
 export default API;

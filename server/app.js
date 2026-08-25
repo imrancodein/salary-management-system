@@ -10,6 +10,7 @@ import leaveRoutes from "./routes/leave.routes.js";
 import eodRoutes from "./routes/eod.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 import holidayRoutes from "./routes/holiday.routes.js";
+import programExpenseRoutes from "./routes/programExpense.routes.js";
 import path from "path";
 const app = express();
 
@@ -38,6 +39,7 @@ app.use("/api/leaves", leaveRoutes);
 app.use("/api/eod", eodRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/holiday", holidayRoutes);
+app.use("/api/program-expenses", programExpenseRoutes);
 
 app.get("/", (req, res) => {
   res.json({

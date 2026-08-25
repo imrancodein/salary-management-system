@@ -60,9 +60,9 @@ const StaffHeader = ({ setIsOpen }) => {
     className="flex items-center gap-3 group"
   >
 
-   <img
-  src={getImageUrl(user.profilePhoto)}
-  alt={user.name}
+ <img
+  src={getImageUrl(user?.profilePhoto)}
+  alt={user?.name || "Profile"}
   className="w-10 h-10 rounded-full object-cover"
 />
 

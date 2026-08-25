@@ -8,7 +8,7 @@ import {
   FaBuilding,
   FaTimes,
   FaCalendarAlt,
-   
+  FaFileInvoiceDollar,
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -47,11 +47,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       icon: <FaMoneyBillWave />,
       path: "/admin/salary",
     },
- {
-  title: "Leave Management",
-  icon: <FaClipboardList/>,
-  path: "/admin/leaves",
-},
+    {
+      title: "Leave Management",
+      icon: <FaClipboardList />,
+      path: "/admin/leaves",
+    },
     {
       title: "EOD",
       icon: <FaClipboardList />,
@@ -59,8 +59,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     },
     {
       title: "Holiday",
-      icon: < FaCalendarAlt />,
+      icon: <FaCalendarAlt />,
       path: "/admin/holiday",
+    },
+    {
+      title: "program-expense",
+      icon: <FaFileInvoiceDollar />,
+      path: "/admin/program-expense",
     },
   ];
 
@@ -87,9 +92,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       >
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
-
           <div>
-
             <h1 className="text-2xl font-bold">
               HRMS
             </h1>
@@ -97,7 +100,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <p className="text-sm text-blue-200 mt-1">
               MANVIYA DRISTIKON SEWA SAMITI
             </p>
-
           </div>
 
           <button
@@ -106,14 +108,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           >
             <FaTimes />
           </button>
-
         </div>
 
         {/* Menu */}
         <ul className="space-y-2">
-
           {menus.map((menu, index) => (
-
             <NavLink
               key={index}
               to={menu.path}
@@ -129,15 +128,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               {menu.icon}
 
               <span>{menu.title}</span>
-
             </NavLink>
-
           ))}
-
         </ul>
 
         {/* Logout */}
-
         <button
           onClick={handleLogout}
           className="absolute bottom-6 left-5 right-5 flex items-center gap-3 bg-red-500 hover:bg-red-600 transition-all duration-300 p-3 rounded-lg"
@@ -145,9 +140,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <FaSignOutAlt />
 
           Logout
-
         </button>
-
       </aside>
     </>
   );

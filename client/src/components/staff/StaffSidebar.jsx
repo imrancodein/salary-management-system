@@ -6,7 +6,8 @@ import {
   FaUser,
   FaSignOutAlt,
   FaTimes,
-  FaCalendarAlt
+  FaCalendarAlt,
+  
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -49,6 +50,11 @@ const StaffSidebar = ({ isOpen, setIsOpen }) => {
       icon: < FaCalendarAlt />,
       path: "/staff/holiday",
     },
+    {
+  title: "Program-expense",
+  icon: <FaMoneyBillWave />,
+  path: "/staff/program-expenses",
+},
     {
       title: "Profile",
       icon: <FaUser />,

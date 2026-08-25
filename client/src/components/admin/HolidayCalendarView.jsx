@@ -133,7 +133,7 @@ const HolidayCalendarView = ({
 
     </div>
 
-    <h2 className="text-xl font-semibold">
+    <h2 className="text-lg font-semibold">
 
       {format(currentDate, "MMMM yyyy")}
 
